@@ -65,7 +65,7 @@ kubectl apply -f ./calico.yaml
 sleep 60
 
 echo "untaint controlplane node"
-kubectl taint node $(kubectl get nodes -o=jsonpath='{.items[].metadata.name}') node.kubernetes.io/not-ready:NoSchedule-
+kubectl taint node $(kubectl get nodes -o=jsonpath='{.items[].metadata.name}')  node-role.kubernetes.io/master:NoSchedule-
 kubectl get node -o wide
 
 

@@ -9,5 +9,5 @@ sed -e '/^.*ubuntu-bionic.*/d' -i /etc/hosts
 
 # Update /etc/hosts about other hosts
 cat >> /etc/hosts <<EOF
-192.168.5.10  devsecops
+192.168.0.0  devsecops
 EOF
