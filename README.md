@@ -2,7 +2,7 @@
 
 ## Fork and Clone this Repo
 
-## Clone to Desktop and VM
+## Clone to Desktop
 
 ## Create a local cluster with kubeadm by running the script in side the local-devsecops-cluster-installation/setup/vm...
 ## replaced the weave.net solution with calico because weave does have some problems during installation
