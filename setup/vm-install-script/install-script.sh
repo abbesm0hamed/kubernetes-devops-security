@@ -50,7 +50,17 @@ kubeadm init --kubernetes-version=${KUBE_VERSION} --skip-token-print
 mkdir -p ~/.kube
 sudo cp -i /etc/kubernetes/admin.conf ~/.kube/config
 
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+# kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+
+curl \
+  https://docs.projectcalico.org/v3.10/manifests/calico.yaml \
+  -O
+curl \
+  https://docs.projectcalico.org/v3.10/manifests/calico-etcd.yaml \
+  -O
+POD_CIDR="192.168.5.10" \
+  sed -i -e "s?192.168.0.0/16?$POD_CIDR?g" calico.yaml
+kubectl apply -f ./calico.yaml
 
 sleep 60
 
